@@ -6,6 +6,8 @@ import Button from './Button'
 import ListIssues from './ListIssues'
 import Loading from './Loading'
 import AutocompleteList from './AutocompleteList'
+import Select from './Select'
+import ErrorMessage from './ErrorMessage'
 import {
   searchIssues,
   changeShow,
@@ -18,26 +20,6 @@ import {
 const Form = styled.form`
   display: flex;
   justify-content: center;
-`
-
-const Select = styled.select`
-  padding: 7px 15px;
-  margin: 10px;
-  font-size: 1.2rem;
-  border: none;
-  box-shadow: 0 1px 1px rgba(0,0,0,.1);
-  transition: all .3s;
-  outline: none;
-  font-weight: 300;
-
-  &:focus {
-    box-shadow: 0 4px 20px 0 rgba(168,182,191,.6)
-  }
-`
-
-const ErrorMessage = styled.h2`
-  font-weight: 300;
-  text-align: center;
 `
 
 const AutocompleteWrap = styled.div`
@@ -134,11 +116,7 @@ class Home extends Component {
           </div>
           <Button>Search</Button>
         </Form>
-        {
-          this.props.error.message
-          ? <ErrorMessage>{this.props.error.message}</ErrorMessage>
-          : null
-        }
+        <ErrorMessage error={this.props.error} />
         <ListIssues issues={[...this.props.issues].splice(0, this.props.offset)} username={this.props.username} repo={this.props.repo} >
           {
             this.props.issues.length && this.props.offset <= this.props.issues.length && !this.props.loading
