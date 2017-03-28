@@ -1,5 +1,9 @@
-`yarn start` or `npm start`
-start develop server
+## Install
+`yarn install` or `npm install`
 
+## Start develop server
+`yarn start` or `npm start`
+
+
+## Build project
 `yarn build` or `npm build`
-build project
