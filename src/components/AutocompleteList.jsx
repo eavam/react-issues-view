@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -27,11 +27,14 @@ const Item = styled.div`
 const AutocompeteList = ({ items, setAndSearch }) => {
   return (
     <Wrapper>
-      {
-        items.map(el => <Item key={el.id} onClick={() => setAndSearch(el.name)} >{el.name}</Item>)
+      { items.map((el) => (
+          <Item key={el.id} onClick={() => setAndSearch(el.name)}>
+            {el.name}
+          </Item>
+        ))
       }
     </Wrapper>
-  );
-};
+  )
+}
 
-export default AutocompeteList;
+export default AutocompeteList

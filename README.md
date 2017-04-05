@@ -1,3 +1,6 @@
+## Поиск issues
+Поиск issues репозитория по логину и названию репо.
+
 ## Install
 `yarn install` or `npm install`
 

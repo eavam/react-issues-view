@@ -11,7 +11,7 @@ const ErrorMessage = ({ error }) => {
     error.message
     ? <Root>{error.message}</Root>
     : null
-  );
-};
+  )
+}
 
-export default ErrorMessage;
+export default ErrorMessage

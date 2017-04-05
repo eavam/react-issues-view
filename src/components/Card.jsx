@@ -36,10 +36,10 @@ const Card = ({ number, title, user, created_at, username, repo }) => {
       </HeadBar>
       <LinkWrapper to={`${username}/${repo}/issue/${number}`}>
         <Text big>{title}</Text>
-        <Text small >Created {moment(created_at).format('DD MMMM YYYY')}</Text>
+        <Text small>Created {moment(created_at).format('DD MMMM YYYY')}</Text>
       </LinkWrapper>
     </CardWrapper>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card
