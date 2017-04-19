@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react'
 import Text from './Text'
 import CardWrapper from './CardWrapper'
 
@@ -9,7 +9,14 @@ const CardPage = ({ title, body, user, number }) => {
       <Text big>{title}</Text>
       <Text>{body}</Text>
     </CardWrapper>
-  );
-};
+  )
+}
 
-export default CardPage;
+CardPage.propTypes = {
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
+  number: PropTypes.string.isRequired,
+}
+
+export default CardPage

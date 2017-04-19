@@ -78,13 +78,15 @@ const rootReducer = (state = initialState, action) => {
     case SET_USER_NAME:
       return {
         ...state,
-        username: action.username
+        username: action.username,
+        repo: ''
       }
   
     case SET_REPO:
       return {
         ...state,
-        repo: action.repo
+        repo: action.repo,
+        issues: []
       }
 
     case REQUEST_AUTOCOMPLITE:

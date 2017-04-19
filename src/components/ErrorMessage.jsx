@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components'
 
 const Root = styled.h2`
@@ -6,12 +6,6 @@ const Root = styled.h2`
   text-align: center;
 `
 
-const ErrorMessage = ({ error }) => {
-  return (
-    error.message
-    ? <Root>{error.message}</Root>
-    : null
-  )
-}
+const ErrorMessage = ({message}) => <Root>{message}</Root>
 
 export default ErrorMessage

@@ -22,8 +22,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={Home}/>
-          <Route path="/:username/:repo/issue/:number" component={IssuePage}/>
+          <Route exact path='/' component={Home}/>
+          <Route path='/:username/:repo/issue/:number' component={IssuePage}/>
         </div>
       </Router>
     );

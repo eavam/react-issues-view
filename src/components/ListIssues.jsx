@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components'
 import Card from './Card'
 
@@ -12,13 +12,12 @@ const ListIssues = ({ issues, children, repo, username }) => {
   return (
     <Wrapper>
       {
-        issues.length
-        ? issues.map(el => <Card key={el.id} {...el} repo={repo} username={username} />)
-        : null
+        (!!issues.length)
+        && issues.map(el => <Card key={el.id} {...el} repo={repo} username={username} />)
       }
       {children}
     </Wrapper>
-  );
-};
+  )
+}
 
-export default ListIssues;
+export default ListIssues

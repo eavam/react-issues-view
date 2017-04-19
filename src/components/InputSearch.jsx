@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export default styled.input`
   padding: 7px 15px;
+  height: 37px;
   margin: 10px;
   font-size: 1.2rem;
   border: none;

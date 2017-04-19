@@ -12,17 +12,15 @@ const Wrapper = styled.div`
 class IssuePage extends Component {
 
   componentDidMount() {
-    const { dispatch, match } = this.props
-    dispatch(fetchSingleIssue(match.params))
+    this.props.fetchSingleIssue()
   }
 
   render() {
     return (
       <Wrapper>
         {
-          +this.props.match.params.number === this.props.singleIssue.number
-          ? <CardPage {...this.props.singleIssue} />
-          : null
+          (+this.props.match.params.number === this.props.singleIssue.number)
+          && <CardPage {...this.props.singleIssue} />
         }
       </Wrapper>
     );
@@ -35,4 +33,12 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(IssuePage)
+function mapDispathToProps(dispatch, props) {
+  return {
+    fetchSingleIssue() {
+      dispatch(fetchSingleIssue(props.match.params))
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(IssuePage)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
@@ -40,6 +40,15 @@ const Card = ({ number, title, user, created_at, username, repo }) => {
       </LinkWrapper>
     </CardWrapper>
   )
+}
+
+Card.propTypes = {
+  number: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
+  created_at: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  repo: PropTypes.string.isRequired,
 }
 
 export default Card

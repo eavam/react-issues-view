@@ -66,10 +66,11 @@ function setSingleIssue(json) {
   }
 }
 
-export function searchIssues(name, repo) {
-  return async (dispatch) => {
+export function searchIssues() {
+  return async (dispatch, getState) => {
+    const { username, repo } = getState()
     dispatch(requestIssues())
-    const url = `https://api.github.com/repos/${name}/${repo}/issues`
+    const url = `https://api.github.com/repos/${username}/${repo}/issues`
     const res = await fetch(url)
     const json = await res.json()
 
