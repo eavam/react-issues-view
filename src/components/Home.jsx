@@ -6,11 +6,19 @@ import Loading from './Loading'
 import Button from './Button'
 import ErrorMessage from './ErrorMessage'
 import MainForm from './MainForm'
-import {
-  nextPage,
-} from '../actions'
+import { nextPage } from '../actions'
 
 class Home extends Component {
+
+  static propTypes = {
+    username: PropTypes.string.isRequired,
+    repo: PropTypes.string.isRequired,
+    issues: PropTypes.array.isRequired,
+    error: PropTypes.object,
+    loading: PropTypes.bool,
+    offset: PropTypes.number,
+    loadMore: PropTypes.func
+  }
 
   renderListItems() {
     const { issues, offset, loading, loadMore } = this.props
@@ -40,15 +48,6 @@ class Home extends Component {
       </div>
     )
   }
-}
-
-Home.propTypes = {
-  username: PropTypes.string.isRequired,
-  repo: PropTypes.string.isRequired,
-  issues: PropTypes.array.isRequired,
-  error: PropTypes.object,
-  loading: PropTypes.bool,
-  offset: PropTypes.number,
 }
 
 function mapStateToProps(state) {

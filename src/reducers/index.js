@@ -29,87 +29,87 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case REQUEST_ISSUES:
-      return {
-        ...state,
-        loading: true,
-        error: {}
-      }
+  case REQUEST_ISSUES:
+    return {
+      ...state,
+      loading: true,
+      error: {}
+    }
 
-    case SUCCESS_ISSUES:
-      return {
-        ...state,
-        loading: false,
-        issues: [...action.json],
-        page: 2,
-        offset: state.show,
-        next_url: action.url
-      }
+  case SUCCESS_ISSUES:
+    return {
+      ...state,
+      loading: false,
+      issues: [...action.json],
+      page: 2,
+      offset: state.show,
+      next_url: action.url
+    }
 
-    case ERROR_ISSUES:
-      return {
-        ...state,
-        loading: false,
-        error: {...action.json}
-      }
+  case ERROR_ISSUES:
+    return {
+      ...state,
+      loading: false,
+      error: {...action.json}
+    }
 
-    case CHANGE_SHOW:
-      return {
-        ...state,
-        show: action.show
-      }
+  case CHANGE_SHOW:
+    return {
+      ...state,
+      show: action.show
+    }
 
-    case UP_OFFEST:
-      return {
-        ...state,
-        offset: state.show + state.offset,
-        loading: false
-      }
+  case UP_OFFEST:
+    return {
+      ...state,
+      offset: state.show + state.offset,
+      loading: false
+    }
 
-    case ADD_ISSUES:
-      return {
-        ...state,
-        issues: [...state.issues,...action.json],
-        offset: state.show + state.offset,
-        page: state.page + 1,
-        loading: false
-      }
+  case ADD_ISSUES:
+    return {
+      ...state,
+      issues: [...state.issues,...action.json],
+      offset: state.show + state.offset,
+      page: state.page + 1,
+      loading: false
+    }
   
-    case SET_USER_NAME:
-      return {
-        ...state,
-        username: action.username,
-        repo: ''
-      }
+  case SET_USER_NAME:
+    return {
+      ...state,
+      username: action.username,
+      repo: ''
+    }
   
-    case SET_REPO:
-      return {
-        ...state,
-        repo: action.repo,
-        issues: []
-      }
+  case SET_REPO:
+    return {
+      ...state,
+      repo: action.repo,
+      issues: []
+    }
 
-    case REQUEST_AUTOCOMPLITE:
-      return {
-        ...state,
-        autocompliteLoading: true
-      }
+  case REQUEST_AUTOCOMPLITE:
+    return {
+      ...state,
+      autocompliteLoading: true
+    }
 
-    case SET_AUTOCOMPLITE:
-      return {
-        ...state,
-        autocompliteLoading: false,
-        autocomplite: [...action.json]
-      }
+  case SET_AUTOCOMPLITE:
+    return {
+      ...state,
+      autocompliteLoading: false,
+      autocomplite: [...action.json]
+    }
 
-    case SET_SINGLE_ISSUE:
-      return {
-        ...state,
-        singleIssue: action.json
-      }
+  case SET_SINGLE_ISSUE:
+    return {
+      ...state,
+      singleIssue: action.json
+    }
 
-    default:
-      return state
+  default:
+    return state
   }
 }
 

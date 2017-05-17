@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import CardPage from './CardPage'
@@ -11,19 +12,26 @@ const Wrapper = styled.div`
 
 class IssuePage extends Component {
 
+  static propTypes = {
+    match: PropTypes.object,
+    singleIssue: PropTypes.object,
+    fetchSingleIssue: PropTypes.func
+  }
+
   componentDidMount() {
     this.props.fetchSingleIssue()
   }
 
   render() {
+    const matchNumber = this.props.match.params.number
     return (
       <Wrapper>
         {
-          (+this.props.match.params.number === this.props.singleIssue.number)
+          (matchNumber === this.props.singleIssue.number)
           && <CardPage {...this.props.singleIssue} />
         }
       </Wrapper>
-    );
+    )
   }
 }
 

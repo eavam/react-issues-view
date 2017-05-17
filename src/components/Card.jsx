@@ -32,7 +32,7 @@ const Card = ({ number, title, user, created_at, username, repo }) => {
           #{number}
         </HeadBarItem>
         <HeadBarItem>
-          <a href={user.html_url} target='_blank'>{user.login}</a>
+          <a href={user.html_url} target='_blank' rel="noopener noreferrer">{user.login}</a>
         </HeadBarItem>
       </HeadBar>
       <LinkWrapper to={`${username}/${repo}/issue/${number}`}>

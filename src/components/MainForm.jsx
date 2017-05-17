@@ -15,6 +15,16 @@ import {
 
 class MainForm extends Component {
 
+  static propTypes = {
+    username: PropTypes.string.isRequired,
+    repo: PropTypes.string.isRequired,
+    changeName: PropTypes.func,
+    changeRepo: PropTypes.func,
+    setAndSearch: PropTypes.func,
+    handleSelect: PropTypes.func,
+    autocomplite: PropTypes.array
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -29,7 +39,7 @@ class MainForm extends Component {
     this.setState({ openAutocomplite: true })
   }
 
-  blurInput(e) {
+  blurInput() {
     setTimeout(() => {
       this.setState({ openAutocomplite: false })
     }, 150)
@@ -70,18 +80,11 @@ class MainForm extends Component {
   }
 }
 
-MainForm.propTypes = {
-  username: PropTypes.string.isRequired,
-  repo: PropTypes.string.isRequired,
-
-}
-
 function mapStateToProps(state) {
   return {
     username: state.username,
     repo: state.repo,
-    autocomplite: state.autocomplite,
-    autocompliteLoading: state.autocompliteLoading
+    autocomplite: state.autocomplite
   }
 }
 

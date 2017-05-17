@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { injectGlobal } from 'styled-components'
 import Home from './components/Home'
 import IssuePage from './components/IssuePage'
@@ -26,8 +26,8 @@ class App extends Component {
           <Route path='/:username/:repo/issue/:number' component={IssuePage}/>
         </div>
       </Router>
-    );
+    )
   }
 }
 
-export default App;
+export default App

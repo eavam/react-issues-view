@@ -32,7 +32,7 @@ const AutocompleteInputSearch = props => {
         disabled={disabled}
         required
       />
-      { !!(autocompliteItems.length && openAutocomplite) &&
+      { (autocompliteItems.length !== 0 && openAutocomplite) &&
         <AutocompleteList items={autocompliteItems} handleSearch={handleSearch} />
       }
     </AutocompleteWrap>
