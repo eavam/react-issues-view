@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -28,11 +29,11 @@ const Item = styled.div`
 const AutocompeteList = ({ items, handleSearch }) => {
   return (
     <Wrapper>
-      { items.map((el) => (
+      { items.map((el) =>
           <Item key={el.id} onClick={() => handleSearch(el.name)}>
             {el.name}
           </Item>
-        ))
+        )
       }
     </Wrapper>
   )
