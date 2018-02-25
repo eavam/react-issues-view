@@ -1,4 +1,3 @@
-
 export const REQUEST_ISSUES = 'REQUEST_ISSUES';
 export const SUCCESS_ISSUES = 'SUCCESS_ISSUES';
 export const ADD_ISSUES = 'ADD_ISSUES';
@@ -74,9 +73,7 @@ export function searchIssues() {
     const res = await fetch(url);
     const json = await res.json();
 
-    res.status === 200
-      ? dispatch(successIssues(json, url))
-      : dispatch(errorIssues(json));
+    res.status === 200 ? dispatch(successIssues(json, url)) : dispatch(errorIssues(json));
   };
 }
 
