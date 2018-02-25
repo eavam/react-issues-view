@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import InputSearch from './InputSearch'
-import AutocompleteList from './AutocompleteList'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import InputSearch from '../InputSearch';
+import AutocompleteList from '../AutocompleteList';
 
 const AutocompleteWrap = styled.div`
   position: relative;
-`
+`;
 
-const AutocompleteInputSearch = props => {
+const AutocompleteInputSearch = (props) => {
   const {
     handleChangeInput,
     inputVal,
@@ -17,8 +17,8 @@ const AutocompleteInputSearch = props => {
     onFocus,
     onBlur,
     openAutocomplite,
-    disabled
-  } = props
+    disabled,
+  } = props;
 
   return (
     <AutocompleteWrap>
@@ -27,17 +27,18 @@ const AutocompleteInputSearch = props => {
         onFocus={onFocus}
         onBlur={onBlur}
         value={inputVal}
-        placeholder='Repository'
-        autoComplete='off'
+        placeholder="Repository"
+        autoComplete="off"
         disabled={disabled}
         required
       />
-      { (autocompliteItems.length !== 0 && openAutocomplite) &&
-        <AutocompleteList items={autocompliteItems} handleSearch={handleSearch} />
-      }
+      {autocompliteItems.length !== 0 &&
+        openAutocomplite && (
+          <AutocompleteList items={autocompliteItems} handleSearch={handleSearch} />
+        )}
     </AutocompleteWrap>
-  )
-}
+  );
+};
 
 AutocompleteInputSearch.propTypes = {
   handleChangeInput: PropTypes.func.isRequired,
@@ -48,6 +49,6 @@ AutocompleteInputSearch.propTypes = {
   onBlur: PropTypes.func.isRequired,
   openAutocomplite: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
-}
+};
 
-export default AutocompleteInputSearch
+export default AutocompleteInputSearch;

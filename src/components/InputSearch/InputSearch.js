@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export default styled.select`
+export default styled.input`
   padding: 7px 15px;
   height: 37px;
   margin: 10px;
@@ -14,4 +14,4 @@ export default styled.select`
   &:focus {
     box-shadow: 0 4px 20px 0 rgba(168,182,191,.6)
   }
-`
+`;

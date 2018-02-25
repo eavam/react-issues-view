@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export default styled.button`
   margin: 10px;
@@ -9,4 +9,4 @@ export default styled.button`
   padding: 7px 15px;
   font-weight: 300;
   cursor: pointer;
-`
+`;

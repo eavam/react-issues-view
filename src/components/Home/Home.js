@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ListIssues from './ListIssues';
-import Loading from './Loading';
-import Button from './Button';
-import ErrorMessage from './ErrorMessage';
-import MainForm from './MainForm';
-import { nextPage } from '../actions';
+import ListIssues from '../ListIssues';
+import Loading from '../Loading';
+import Button from '../Button';
+import ErrorMessage from '../ErrorMessage';
+import MainForm from '../MainForm';
+import { nextPage } from '../../actions';
 
 class Home extends Component {
   static propTypes = {
