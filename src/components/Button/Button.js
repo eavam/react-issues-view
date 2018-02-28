@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
-export default styled.button`
+export default styled('button')`
   margin: 10px;
   font-size: 1.2rem;
   border: none;

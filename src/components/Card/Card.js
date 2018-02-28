@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import Text from '../Text';
@@ -11,13 +11,13 @@ const LinkWrapper = styled(Link)`
   text-decoration: none;
 `;
 
-const HeadBar = styled.div`
+const HeadBar = styled('div')`
   font-weight: 300;
   display: flex;
   align-items: center;
 `;
 
-const HeadBarItem = styled.div`
+const HeadBarItem = styled('div')`
   margin: 5px;
 `;
 

@@ -1,13 +1,16 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import logger from 'redux-logger';
-import rootReducer from '../reducers';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-let middleware = [thunkMiddleware];
+import rootReducer from '../reducers';
+import fields from '../ducks/fields';
+import sagas from '../sagas';
+
+const sagaMiddleware = createSagaMiddleware();
+let middleware = [sagaMiddleware];
 const enhancers = [];
 
 if (process.env.NODE_ENV !== 'production') {
-  middleware = [...middleware, logger];
+  middleware = [...middleware];
 }
 
 if (process.env.NODE_ENV === 'development') {
@@ -19,5 +22,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const composedEnhancers = compose(applyMiddleware(...middleware), ...enhancers);
+const reducers = combineReducers({ rootReducer, fields });
 
-export default createStore(rootReducer, composedEnhancers);
+const store = createStore(reducers, composedEnhancers);
+sagaMiddleware.run(sagas);
+
+export default store;

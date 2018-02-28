@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 
-const Root = styled.h2`
+const Root = styled('h2')`
   font-weight: 300;
   text-align: center;
 `;

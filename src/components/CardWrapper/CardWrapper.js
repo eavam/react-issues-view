@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
-export default styled.div`
+export default styled('div')`
   width: ${props => (props.full ? '100%' : '45%')};
   background: #fff;
   padding: 7px 15px;

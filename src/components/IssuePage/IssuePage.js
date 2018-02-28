@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { connect } from 'react-redux';
 import CardPage from '../CardPage';
 import { fetchSingleIssue } from '../../actions';
 
-const Wrapper = styled.div`
+const Wrapper = styled('div')`
   max-width: 1200px;
   margin: 0 auto;
 `;

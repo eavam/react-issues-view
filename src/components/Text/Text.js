@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
 const getFontSize = ({ small, big }) => {
   if (small) {
@@ -9,7 +9,7 @@ const getFontSize = ({ small, big }) => {
   return '1rem';
 };
 
-export default styled.div`
+export default styled('div')`
   font-weight: 300;
   margin: 1rem 0;
   font-size: ${getFontSize};

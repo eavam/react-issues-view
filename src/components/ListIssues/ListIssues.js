@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import Card from '../Card';
 
-const Wrapper = styled.div`
+const Wrapper = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +14,7 @@ const ListIssues = ({
 }) => (
   <Wrapper>
     {issues.length !== 0 &&
-        issues.map(el => <Card key={el.id} {...el} repo={repo} username={username} />)}
+      issues.map(el => <Card key={el.id} {...el} repo={repo} username={username} />)}
     {children}
   </Wrapper>
 );

@@ -12,6 +12,14 @@ import {
   SET_SINGLE_ISSUE,
 } from '../actions';
 
+/*
+{
+  fields: {
+    username:
+  }
+}
+*/
+
 const initialState = {
   username: '',
   repo: '',

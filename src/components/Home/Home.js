@@ -5,7 +5,7 @@ import ListIssues from '../ListIssues';
 import Loading from '../Loading';
 import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
-import MainForm from '../MainForm';
+import Form from '../Form';
 import { nextPage } from '../../actions';
 
 class Home extends Component {
@@ -43,25 +43,25 @@ class Home extends Component {
 
     return (
       <div>
-        <MainForm />
-        {error.message && <ErrorMessage message={error.message} />}
+        <Form />
+        {/* {error.message && <ErrorMessage message={error.message} />}
         <ListIssues issues={issuesOffset} username={username} repo={repo}>
           {this.renderListItems()}
           {this.renderLoading()}
-        </ListIssues>
+        </ListIssues> */}
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ rootReducer }) {
   return {
-    username: state.username,
-    repo: state.repo,
-    issues: state.issues,
-    error: state.error,
-    loading: state.loading,
-    offset: state.offset,
+    username: rootReducer.username,
+    repo: rootReducer.repo,
+    issues: rootReducer.issues,
+    error: rootReducer.error,
+    loading: rootReducer.loading,
+    offset: rootReducer.offset,
   };
 }
 

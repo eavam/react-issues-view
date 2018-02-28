@@ -1,18 +1,18 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'react-emotion';
 
 const rotate360 = keyframes`
   from { transform: rotate(0deg) }
   to { transform: rotate(360deg) }
 `;
 
-const SpinnerWrap = styled.div`
+const SpinnerWrap = styled('div')`
   margin-top: 5px;
   margin-bottom: 5px;
-  text-align: center
+  text-align: center;
 `;
 
-const Spinner = styled.span`
+const Spinner = styled('span')`
   display: inline-block;
   border: 2px solid transparent;
   width: 40px;
@@ -21,7 +21,7 @@ const Spinner = styled.span`
   border-bottom-color: #2856b6;
   border-left-color: #2856b6;
   border-radius: 50%;
-  animation: ${rotate360} .4s infinite linear;
+  animation: ${rotate360} 0.4s infinite linear;
 `;
 
 const Loading = () => (
