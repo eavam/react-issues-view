@@ -38,8 +38,11 @@ class DropdownContent extends Component {
   }
 
   render() {
-    const { position } = this.props;
-    return ReactDOM.createPortal(<Wrapper {...position}>{this.props.children}</Wrapper>, this.el);
+    const { children, position, isOpen } = this.props;
+
+    if (!isOpen) return null;
+
+    return ReactDOM.createPortal(<Wrapper {...position}>{children}</Wrapper>, this.el);
   }
 }
 

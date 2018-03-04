@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
@@ -14,13 +14,13 @@ const Item = styled('div')`
 `;
 
 const AutocompeteList = ({ items, handleSearch }) => (
-  <div>
+  <Fragment>
     {items.map(el => (
       <Item key={el.id} onClick={() => handleSearch(el.name)}>
         {el.name}
       </Item>
     ))}
-  </div>
+  </Fragment>
 );
 
 AutocompeteList.propTypes = {

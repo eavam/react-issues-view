@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'react-emotion';
-import withConnnect from '../../hocs/withConnect';
 import { Input } from '../baseComponents';
 import AutocompleteInput from '../AutocompleteInput';
 import AutocompleteList from '../AutocompleteList';
-import Loading from '../Loading';
-import { changeUserName, changeRepoName } from '../../ducks/fields';
 
 const Root = styled('div')`
   display: flex;
@@ -24,28 +21,16 @@ const Form = ({
   <Root>
     <Input onChange={onChangeUserName} value={fieldUserName} placeholder="User name" required />
     <AutocompleteInput
-      onChange={onChangeRepoName}
-      value={fieldRepoName}
-      placeholder="Repository"
-      autoComplete="off"
-      disabled={disabledFieldRepoName}
       required
+      autoComplete="off"
+      placeholder="Repository"
+      value={fieldRepoName}
+      onChange={onChangeRepoName}
+      disabled={disabledFieldRepoName}
     >
-      {autocompliteListIsLoading ? <Loading /> : <AutocompleteList items={autocompliteList} />}
+      <AutocompleteList items={autocompliteList} isLoading={autocompliteListIsLoading} />
     </AutocompleteInput>
   </Root>
 );
 
-export default withConnnect(
-  [
-    'fieldUserName',
-    'fieldRepoName',
-    'disabledFieldRepoName',
-    'autocompliteList',
-    'autocompliteListIsLoading',
-  ],
-  {
-    onChangeUserName: changeUserName,
-    onChangeRepoName: changeRepoName,
-  },
-)(Form);
+export default Form;

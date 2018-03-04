@@ -1,13 +1,17 @@
-import { call, put, select, throttle } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
+import { call, put, select, takeLatest, cancel } from 'redux-saga/effects';
 import { getFieldUserName } from '../selectors';
-import { changeRepoName, requestAutocompliteList, setAutocompliteList } from '../ducks/fields';
+import { changeRepoName } from '../ducks/fields';
+import { requestAutocompliteList, setAutocompliteList } from '../ducks/autocomplite';
 
-function* fetchAutocompliteList(action) {
+function* fetchAutocompliteList({ payload }) {
+  yield call(delay, 500);
+
+  if (payload.length < 2) yield cancel();
+
   const username = yield select(getFieldUserName);
 
-  const url = `https://api.github.com/search/repositories?q=${
-    action.payload
-  }+user:${username}&sort=updated`;
+  const url = `https://api.github.com/search/repositories?q=${payload}+user:${username}&sort=updated`;
 
   try {
     yield put(requestAutocompliteList());
@@ -22,5 +26,5 @@ function* fetchAutocompliteList(action) {
 }
 
 export default function* () {
-  yield throttle(700, changeRepoName, fetchAutocompliteList);
+  yield takeLatest(changeRepoName, fetchAutocompliteList);
 }
