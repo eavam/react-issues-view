@@ -5,15 +5,15 @@ import withConnect from '../../hocs/withConnect';
 import { resetAutocompliteList } from '../../ducks/autocomplite';
 
 export default compose(
-  withConnect(['fieldUserName'], { onReset: resetAutocompliteList }),
+  withConnect(['fieldRepoName'], { onReset: resetAutocompliteList }),
   lifecycle({
     componentWillUnmount() {
-      const { fieldUserName, onReset } = this.props;
-      if (fieldUserName.length < 2) onReset();
+      const { fieldRepoName, onReset } = this.props;
+      if (fieldRepoName.length < 2) onReset();
     },
   }),
   branch(({ isLoading }) => isLoading, renderComponent(Loading)),
   mapProps(({
-    isLoading, onReset, fieldUserName, ...props
+    isLoading, onReset, fieldRepoName, ...props
   }) => props),
 )(AutocompleteList);
