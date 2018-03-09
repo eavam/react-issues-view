@@ -16,7 +16,7 @@ const Form = ({
   onChangeRepoName,
   disabledFieldRepoName,
   autocompliteListIsLoading,
-  autocompliteList,
+  autocompliteIds,
 }) => (
   <Root>
     <Input onChange={onChangeUserName} value={fieldUserName} placeholder="User name" required />
@@ -28,7 +28,7 @@ const Form = ({
       onChange={onChangeRepoName}
       disabled={disabledFieldRepoName}
     >
-      <AutocompleteList items={autocompliteList} isLoading={autocompliteListIsLoading} />
+      <AutocompleteList items={autocompliteIds} isLoading={autocompliteListIsLoading} />
     </AutocompleteInput>
   </Root>
 );

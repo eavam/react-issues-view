@@ -7,7 +7,7 @@ export default withConnnect(
     'fieldUserName',
     'fieldRepoName',
     'disabledFieldRepoName',
-    'autocompliteList',
+    'autocompliteIds',
     'autocompliteListIsLoading',
   ],
   {

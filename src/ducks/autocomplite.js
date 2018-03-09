@@ -5,15 +5,17 @@ export const requestAutocompliteList = createAction('Ducks/Autocompolite/Request
 export const resetAutocompliteList = createAction('Ducks/Autocompolite/ResetAutocompliteList');
 
 const initState = {
-  autocompliteList: [],
   loading: false,
+  autocompliteIds: [],
+  response: null,
 };
 
 const reducer = {};
 
-reducer[setAutocompliteList] = (state, autocompliteList) => ({
+reducer[setAutocompliteList] = (state, response) => ({
   ...state,
-  autocompliteList,
+  response,
+  autocompliteIds: response.result.items,
   loading: false,
 });
 
@@ -24,7 +26,8 @@ reducer[requestAutocompliteList] = state => ({
 
 reducer[resetAutocompliteList] = state => ({
   ...state,
-  autocompliteList: [],
+  response: null,
+  autocompliteIds: [],
   loading: false,
 });
 

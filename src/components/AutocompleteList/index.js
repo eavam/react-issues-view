@@ -15,5 +15,7 @@ export default compose(
   branch(({ isLoading }) => isLoading, renderComponent(Loading)),
   mapProps(({
     isLoading, onReset, fieldRepoName, ...props
-  }) => props),
+  }) => ({
+    ...props,
+  })),
 )(AutocompleteList);
