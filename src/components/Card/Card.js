@@ -6,11 +6,6 @@ import { Link } from 'react-router-dom';
 import Text from '../Text';
 import CardWrapper from '../CardWrapper';
 
-const LinkWrapper = styled(Link)`
-  color: #000;
-  text-decoration: none;
-`;
-
 const HeadBar = styled('div')`
   font-weight: 300;
   display: flex;
@@ -36,10 +31,9 @@ const Card = ({
         </a>
       </HeadBarItem>
     </HeadBar>
-    <LinkWrapper to={`${username}/${repo}/issue/${number}`}>
-      <Text big>{title}</Text>
-      <Text small>Created {moment(created_at).format('DD MMMM YYYY')}</Text>
-    </LinkWrapper>
+    <Text big>{title}</Text>
+    <Text small>Created {moment(created_at).format('DD MMMM YYYY')}</Text>
+    <Link to={`${username}/${repo}/issue/${number}`}>more</Link>
   </CardWrapper>
 );
 
