@@ -8,17 +8,19 @@ const Wrapper = styled('div')`
   position: fixed;
   background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  top: ${props => `${props.bottom}px`};
-  left: ${props => `${props.left}px`};
-  width: ${props => `${props.width}px`};
+  top: ${props => `${props.position.bottom}px`};
+  left: ${props => `${props.position.left}px`};
+  width: ${props => `${props.position.width}px`};
   max-height: 16rem;
   overflow-y: scroll;
+  z-index: ${props => props.zIndex + 1000};
 `;
 
 class DropdownContent extends Component {
   constructor(props) {
     super(props);
     this.el = document.createElement('div');
+    this.zIndex = document.body.children.length;
   }
 
   componentDidMount() {
@@ -38,11 +40,18 @@ class DropdownContent extends Component {
   }
 
   render() {
-    const { children, position, isOpen } = this.props;
+    const {
+      children, position, isOpen, onRef, ...props
+    } = this.props;
 
     if (!isOpen) return null;
 
-    return ReactDOM.createPortal(<Wrapper {...position}>{children}</Wrapper>, this.el);
+    return ReactDOM.createPortal(
+      <Wrapper position={position} zIndex={this.zIndex} innerRef={onRef}>
+        {React.cloneElement(children, props)}
+      </Wrapper>,
+      this.el,
+    );
   }
 }
 

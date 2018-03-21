@@ -7,14 +7,14 @@ const Wrapper = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2rem;
 `;
 
 const ListIssues = ({
   issues, children, repo, username,
 }) => (
   <Wrapper>
-    {issues.length !== 0 &&
-      issues.map(el => <Card key={el.id} {...el} repo={repo} username={username} />)}
+    {issues.map(issue => <Card key={issue.id} repo={repo} username={username} {...issue} />)}
     {children}
   </Wrapper>
 );
