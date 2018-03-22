@@ -1,6 +1,6 @@
 import { createAction, createReducer } from 'redux-act';
 
-export const setAutocompliteList = createAction('Ducks/Autocompolite/SetAutocompliteList');
+export const successAutocompliteList = createAction('Ducks/Autocompolite/SetAutocompliteList');
 export const requestAutocompliteList = createAction('Ducks/Autocompolite/RequestAutocompliteList');
 export const resetAutocompliteList = createAction('Ducks/Autocompolite/ResetAutocompliteList');
 
@@ -12,7 +12,7 @@ const initState = {
 
 const reducer = {};
 
-reducer[setAutocompliteList] = (state, response) => ({
+reducer[successAutocompliteList] = (state, response) => ({
   ...state,
   response,
   autocompliteIds: response.result.items,

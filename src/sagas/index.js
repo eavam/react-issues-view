@@ -1,17 +1,19 @@
 import { delay } from 'redux-saga';
 import { call, put, select, takeLatest, cancel } from 'redux-saga/effects';
-import { getFieldUserName, getFieldRepoName, getPage } from '../selectors';
-import { changeRepoName } from '../ducks/fields';
-import { requestAutocompliteList, setAutocompliteList } from '../ducks/autocomplite';
+
 import { autocomliteSchema, issuesSchema } from '../schemas';
+import { getFieldUserName, getFieldRepoName, getPage } from '../selectors';
+
 import {
+  setIssues,
+  // resetIssues,
   requestIssues,
   requestNextPageIssues,
-  setIssues,
   successNextPageIssues,
-  resetIssues,
 } from '../ducks/issues';
+import { changeRepoName } from '../ducks/fields';
 import { requestIssuePage, successIssuePage } from '../ducks/issuePage';
+import { requestAutocompliteList, successAutocompliteList } from '../ducks/autocomplite';
 
 function* fetchAutocompliteList() {
   yield call(delay, 500);
@@ -29,7 +31,7 @@ function* fetchAutocompliteList() {
     const response = yield call(fetch, url);
     const responseJson = yield response.json();
 
-    yield put(setAutocompliteList(autocomliteSchema(responseJson)));
+    yield put(successAutocompliteList(autocomliteSchema(responseJson)));
   } catch (e) {
     // yield put({ type: 'USER_FETCH_FAILED', message: e.message });
   }
@@ -37,8 +39,6 @@ function* fetchAutocompliteList() {
 
 function* fetchIssues({ payload }) {
   const userName = yield select(getFieldUserName);
-
-  yield put(changeRepoName({ target: { value: payload } }));
 
   const url = `https://api.github.com/repos/${userName}/${payload}/issues`;
 
@@ -50,6 +50,10 @@ function* fetchIssues({ payload }) {
   } catch (e) {
     // yield put({ type: 'USER_FETCH_FAILED', message: e.message });
   }
+}
+
+function* setRepoName({ payload }) {
+  yield put(changeRepoName({ target: { value: payload } }));
 }
 
 function* fetchNextPageIssues() {
@@ -86,6 +90,7 @@ function* fetchIssuePage({ payload }) {
 
 export default function* () {
   yield takeLatest(changeRepoName, fetchAutocompliteList);
+  yield takeLatest(requestIssues, setRepoName);
   yield takeLatest(requestIssues, fetchIssues);
   yield takeLatest(requestNextPageIssues, fetchNextPageIssues);
   yield takeLatest(requestIssuePage, fetchIssuePage);

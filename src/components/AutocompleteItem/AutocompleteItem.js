@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
 const Item = styled('div')`
@@ -17,5 +18,10 @@ const AutocompleteItem = ({ name, onClick }) => (
     {name}
   </Item>
 );
+
+AutocompleteItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AutocompleteItem;

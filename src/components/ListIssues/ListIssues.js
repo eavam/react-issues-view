@@ -15,10 +15,7 @@ const ListIssues = ({ issuesIds }) => (
 );
 
 ListIssues.propTypes = {
-  issues: PropTypes.array,
-  children: PropTypes.element,
-  repo: PropTypes.string,
-  username: PropTypes.string,
+  issuesIds: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default ListIssues;
