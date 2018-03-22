@@ -4,6 +4,6 @@ import withConnnect from '../../hocs/withConnect';
 import Loading from '../Loading';
 
 export default compose(
-  withConnnect(['issuesIsLoading', 'issues']),
+  withConnnect(['issuesIsLoading', 'issuesIds']),
   branch(({ issuesIsLoading }) => issuesIsLoading, renderComponent(Loading)),
 )(ListIssues);

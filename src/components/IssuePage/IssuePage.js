@@ -1,48 +1,26 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'react-emotion';
-import { connect } from 'react-redux';
-import CardPage from '../CardPage';
-import { fetchSingleIssue } from '../../actions';
+import Text from '../Text';
+import CardWrapper from '../CardWrapper';
 
 const Wrapper = styled('div')`
   max-width: 1200px;
   margin: 0 auto;
+  padding: 4rem;
 `;
 
-class IssuePage extends Component {
-  static propTypes = {
-    match: PropTypes.object,
-    singleIssue: PropTypes.object,
-    fetchSingleIssue: PropTypes.func,
-  };
+const IssuePage = ({
+  title, body, user, number,
+}) => (
+  <Wrapper>
+    <CardWrapper full>
+      <Text big>
+        #{number} <a href={user.html_url}>{user.login}</a>
+      </Text>
+      <Text big>{title}</Text>
+      <Text>{body}</Text>
+    </CardWrapper>
+  </Wrapper>
+);
 
-  componentDidMount() {
-    this.props.fetchSingleIssue();
-  }
-
-  render() {
-    const matchNumber = this.props.match.params.number;
-    return (
-      <Wrapper>
-        {matchNumber === this.props.singleIssue.number && <CardPage {...this.props.singleIssue} />}
-      </Wrapper>
-    );
-  }
-}
-
-function mapStateToProps(state) {
-  return {
-    singleIssue: state.singleIssue,
-  };
-}
-
-function mapDispathToProps(dispatch, props) {
-  return {
-    fetchSingleIssue() {
-      dispatch(fetchSingleIssue(props.match.params));
-    },
-  };
-}
-
-export default connect(mapStateToProps, mapDispathToProps)(IssuePage);
+export default IssuePage;

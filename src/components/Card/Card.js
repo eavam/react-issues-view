@@ -17,7 +17,7 @@ const HeadBarItem = styled('div')`
 `;
 
 const Card = ({
-  number, title, user, created_at, username, repo,
+  number, title, user, created, fieldUserName, fieldRepoName,
 }) => (
   <CardWrapper>
     <HeadBar>
@@ -32,8 +32,8 @@ const Card = ({
       </HeadBarItem>
     </HeadBar>
     <Text big>{title}</Text>
-    <Text small>Created {moment(created_at).format('DD MMMM YYYY')}</Text>
-    <Link to={`${username}/${repo}/issue/${number}`}>more</Link>
+    <Text small>Created {moment(created).format('DD MMMM YYYY')}</Text>
+    <Link to={`${fieldUserName}/${fieldRepoName}/issue/${number}`}>more</Link>
   </CardWrapper>
 );
 

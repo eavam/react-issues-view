@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { injectGlobal } from 'emotion';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import IssuePage from './components/IssuePage';
 
@@ -18,10 +18,10 @@ injectGlobal`
 
 const App = () => (
   <Router>
-    <Fragment>
+    <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/:username/:repo/issue/:number" component={IssuePage} />
-    </Fragment>
+      <Route path="/:userName/:repoName/issue/:id" component={IssuePage} />
+    </Switch>
   </Router>
 );
 

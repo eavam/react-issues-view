@@ -10,13 +10,8 @@ const Wrapper = styled('div')`
   padding: 2rem;
 `;
 
-const ListIssues = ({
-  issues, children, repo, username,
-}) => (
-  <Wrapper>
-    {issues.map(issue => <Card key={issue.id} repo={repo} username={username} {...issue} />)}
-    {children}
-  </Wrapper>
+const ListIssues = ({ issuesIds }) => (
+  <Wrapper>{issuesIds.map(id => <Card key={id} id={id} />)}</Wrapper>
 );
 
 ListIssues.propTypes = {

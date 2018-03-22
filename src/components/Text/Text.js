@@ -13,4 +13,5 @@ export default styled('div')`
   font-weight: 300;
   margin: 1rem 0;
   font-size: ${getFontSize};
+  word-break: break-word;
 `;
