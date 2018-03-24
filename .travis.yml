@@ -22,6 +22,7 @@ deploy:
   api_key:
     secure: $API_KEY
   app: react-issues-view
+  skip_cleanup: true
   local_dir: build
   on:
     repo: egorAva/react-issues-view
